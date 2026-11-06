@@ -1,0 +1,274 @@
+/* ==========================================================================
+   SkillBridge — Student Career Navigator
+   Responsive Stylesheet: Breakpoints, Fluid Layouts & Mobile Optimization
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Large Desktops (1440px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1440px) {
+  .container {
+    max-width: 1240px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Laptops & Desktops (1200px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .stat-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablets & Small Desktops (1024px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: flex;
+  }
+
+  .skill-analysis-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .gap-summary-sticky {
+    position: static;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content h1 {
+    font-size: 1.85rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Tablets & Phablets (768px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .site-header {
+    height: 64px;
+  }
+
+  main.site-main {
+    padding: 1.25rem 0 3.5rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .dashboard-hero {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .stat-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input-wrap {
+    min-width: 100%;
+  }
+
+  .careers-grid,
+  .projects-grid,
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-item-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .rating-pills-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .rating-btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.4rem 0.2rem;
+  }
+
+  .coding-streak-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .ai-drawer {
+    max-width: 100%;
+  }
+
+  .modal-box {
+    margin: 1rem;
+    max-width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .modal-body {
+    padding: 1.25rem;
+  }
+
+  .floating-ai-fab {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Devices (480px and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .brand-text {
+    font-size: 1.15rem;
+  }
+
+  .brand-badge {
+    display: none;
+  }
+
+  .header-actions .btn-ai-trigger span {
+    display: none;
+  }
+
+  .header-actions .btn-ai-trigger {
+    padding: 0.45rem 0.65rem;
+  }
+
+  .hero-pill {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.65rem;
+  }
+
+  .stat-val {
+    font-size: 1.6rem;
+  }
+
+  .career-meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .project-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-links .btn {
+    width: 100%;
+  }
+
+  .milestone-item {
+    padding: 1rem;
+    gap: 0.85rem;
+  }
+
+  .roadmap-timeline {
+    padding-left: 1.8rem;
+  }
+
+  .phase-node {
+    left: -1.8rem;
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Ultra-small Viewports (375px and 320px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 375px) {
+  html {
+    font-size: 15px;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .rating-btn {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.15rem;
+  }
+
+  .card {
+    padding: 1.1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 14px;
+  }
+
+  .brand-logo svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .lang-selector {
+    padding: 0.35rem 0.45rem;
+    font-size: 0.75rem;
+  }
+
+  .rating-pills-group {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .rating-btn {
+    flex: 1 1 45%;
+  }
+}

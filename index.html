@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>SkillBridge — Student Career Navigator</title>
+  <meta name="description" content="AI-guided student career navigator with real-time skill-gap analysis, personalized learning roadmaps, portfolio project trackers, and coding practice logs.">
+  <meta name="theme-color" content="#070d19">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SkillBridge — Student Career Navigator">
+  <meta property="og:description" content="Empowering computer science students to close skill gaps and master high-demand software engineering tracks.">
+  <meta property="og:image" content="./assets/logo.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/responsive.css">
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- Global Header -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <!-- Logo -->
+        <a href="#dashboard" class="brand-logo" aria-label="SkillBridge Home">
+          <svg viewBox="0 0 48 48" fill="none">
+            <defs>
+              <linearGradient id="sbGradHeader" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#38bdf8"/>
+                <stop offset="50%" stop-color="#6366f1"/>
+                <stop offset="100%" stop-color="#06b6d4"/>
+              </linearGradient>
+            </defs>
+            <rect x="4" y="4" width="40" height="40" rx="12" fill="#0f172a" stroke="url(#sbGradHeader)" stroke-width="2.5"/>
+            <path d="M14 34L24 12L34 34" stroke="url(#sbGradHeader)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18 26H30" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="24" cy="12" r="3.5" fill="#38bdf8"/>
+          </svg>
+          <span class="brand-text">Skill<span>Bridge</span></span>
+          <span class="brand-badge">PRO</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <a href="#dashboard" class="nav-link active" data-target="dashboard" data-i18n="nav_dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            Dashboard
+          </a>
+          <a href="#careers" class="nav-link" data-target="careers" data-i18n="nav_careers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+            Careers
+          </a>
+          <a href="#skill-gap" class="nav-link" data-target="skill-gap" data-i18n="nav_skill_gap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
+            Skill-Gap
+          </a>
+          <a href="#roadmap" class="nav-link" data-target="roadmap" data-i18n="nav_roadmap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+            Roadmap
+          </a>
+          <a href="#projects" class="nav-link" data-target="projects" data-i18n="nav_projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+            Projects
+          </a>
+          <a href="#coding" class="nav-link" data-target="coding" data-i18n="nav_coding">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Coding
+          </a>
+          <a href="#resources" class="nav-link" data-target="resources" data-i18n="nav_resources">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            Resources
+          </a>
+        </nav>
+
+        <!-- Header Actions: Language, Profile, AI Copilot & Hamburger -->
+        <div class="header-actions">
+          <select id="langSelector" class="lang-selector" aria-label="Select Language">
+            <option value="en">🇺🇸 EN</option>
+            <option value="es">🇪🇸 ES</option>
+            <option value="hi">🇮🇳 HI</option>
+            <option value="fr">🇫🇷 FR</option>
+          </select>
+
+          <button type="button" class="btn btn-sm btn-icon-only" onclick="SkillBridgeApp.openProfileModal()" title="Student Profile & Settings" aria-label="Profile Settings">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </button>
+
+          <button type="button" class="btn-ai-trigger js-open-ai-drawer" aria-label="Open AI Career Copilot">
+            <div class="pulse-dot"></div>
+            <span data-i18n="nav_ai">Ask AI</span>
+          </button>
+
+          <button type="button" id="mobileNavToggle" class="mobile-nav-toggle" aria-label="Toggle Navigation Drawer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+      <div class="drawer-content">
+        <div class="drawer-header">
+          <div class="brand-logo">
+            <span class="brand-text">Skill<span>Bridge</span></span>
+          </div>
+          <button type="button" id="drawerClose" class="drawer-close" aria-label="Close Navigation">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <nav class="drawer-nav-list">
+          <a href="#dashboard" class="drawer-nav-link active" data-target="dashboard" data-i18n="nav_dashboard">📊 Dashboard</a>
+          <a href="#careers" class="drawer-nav-link" data-target="careers" data-i18n="nav_careers">🧭 Career Explorer</a>
+          <a href="#skill-gap" class="drawer-nav-link" data-target="skill-gap" data-i18n="nav_skill_gap">📉 Skill-Gap Analyzer</a>
+          <a href="#roadmap" class="drawer-nav-link" data-target="roadmap" data-i18n="nav_roadmap">🗺️ Learning Roadmap</a>
+          <a href="#projects" class="drawer-nav-link" data-target="projects" data-i18n="nav_projects">💼 Portfolio Projects</a>
+          <a href="#coding" class="drawer-nav-link" data-target="coding" data-i18n="nav_coding">💻 Coding Practice</a>
+          <a href="#resources" class="drawer-nav-link" data-target="resources" data-i18n="nav_resources">📚 Resources Hub</a>
+        </nav>
+
+        <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle);">
+          <button type="button" class="btn btn-primary btn-block js-open-ai-drawer">
+            <span>✨ Launch AI Copilot</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content App -->
+    <main class="site-main">
+      <div class="container">
+
+        <!-- ====================================================================
+             SECTION 1: DASHBOARD
+             ==================================================================== -->
+        <section id="sec-dashboard" class="page-section active">
+          <!-- Hero Banner -->
+          <div class="dashboard-hero">
+            <div class="hero-grid">
+              <div class="hero-content">
+                <span class="sub-badge" data-i18n="app_title">SkillBridge Career Navigator</span>
+                <h1>Welcome back, <span id="dashStudentName" style="color: var(--accent-cyan);">Student</span>!</h1>
+                <p data-i18n="hero_sub">Your personalized career acceleration workspace. Monitor benchmark readiness, close critical skill gaps, and build verified engineering proof of work.</p>
+                <div class="hero-stats-pills">
+                  <div class="hero-pill">
+                    <span>Target Career:</span>
+                    <strong id="dashTargetCareerPill">Full Stack Web Developer</strong>
+                  </div>
+                  <div class="hero-pill">
+                    <span>Status:</span>
+                    <strong style="color: var(--accent-emerald);">Active Sprint</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Animated Readiness Gauge -->
+              <div class="gauge-wrap" aria-label="Career Readiness Gauge">
+                <svg class="gauge-svg" viewBox="0 0 140 140">
+                  <defs>
+                    <linearGradient id="cyanBlueGrad" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#38bdf8"/>
+                      <stop offset="100%" stop-color="#6366f1"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="gauge-bg" cx="70" cy="70" r="60"/>
+                  <circle id="dashGaugeCircle" class="gauge-fill" cx="70" cy="70" r="60"/>
+                </svg>
+                <div class="gauge-text">
+                  <div id="dashGaugeValue" class="gauge-value">68%</div>
+                  <div class="gauge-label">Readiness</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stat Cards -->
+          <div class="stat-cards-grid">
+            <div class="card stat-card">
+              <div class="stat-top">
+                <span class="stat-label" data-i18n="stat_skills">Required Skills</span>
+                <div class="stat-icon cyan">🎯</div>
+              </div>
+              <div id="dashStatSkills" class="stat-val">7</div>
+              <div class="stat-sub" data-i18n="stat_skills_sub">Core industry competencies</div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-top">
+                <span class="stat-label" data-i18n="stat_streak">Coding Streak</span>
+                <div class="stat-icon amber">🔥</div>
+              </div>
+              <div id="dashStatStreak" class="stat-val">12d</div>
+              <div class="stat-sub" data-i18n="stat_streak_sub">Consecutive practice days</div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-top">
+                <span class="stat-label" data-i18n="stat_projects">Portfolio Works</span>
+                <div class="stat-icon emerald">💼</div>
+              </div>
+              <div id="dashStatProjects" class="stat-val">1 / 3</div>
+              <div class="stat-sub" data-i18n="stat_projects_sub">Production projects completed</div>
+            </div>
+
+            <div class="card stat-card">
+              <div class="stat-top">
+                <span class="stat-label">AI Copilot</span>
+                <div class="stat-icon indigo">🤖</div>
+              </div>
+              <div class="stat-val" style="font-size: 1.3rem; color: var(--accent-indigo);">Ready</div>
+              <div class="stat-sub">Serverless & Local Hybrid</div>
+            </div>
+          </div>
+
+          <!-- Two-Column Layout -->
+          <div class="dashboard-columns">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  Next Recommended Milestone
+                </h3>
+                <a href="#roadmap" class="btn btn-sm btn-outline">Go to Roadmap</a>
+              </div>
+              <p id="dashNextActionText" style="color: var(--text-main); font-size: 1rem; margin-bottom: 1.25rem;">
+                Advance your roadmap: Work on <strong>HTML5 Semantic Structure & Responsive CSS3</strong> (25 hrs)
+              </p>
+              <div style="background: rgba(15,23,42,0.6); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">Quick action for today:</span>
+                <button type="button" class="btn btn-sm btn-primary" onclick="window.location.hash='#coding'">Log Today's LeetCode Problem</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                  Quick Actions
+                </h3>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.65rem;">
+                <a href="#skill-gap" class="btn btn-sm btn-secondary" style="justify-content: flex-start;">
+                  <span>🎯 Assess Skill Deficiencies</span>
+                </a>
+                <a href="#projects" class="btn btn-sm btn-secondary" style="justify-content: flex-start;">
+                  <span>📂 Add Project to Portfolio</span>
+                </a>
+                <button type="button" class="btn btn-sm btn-outline js-open-ai-drawer" style="justify-content: flex-start;">
+                  <span>🤖 Ask AI Copilot for Advice</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 2: CAREER EXPLORER
+             ==================================================================== -->
+        <section id="sec-careers" class="page-section">
+          <div class="section-header">
+            <span class="sub-badge">Industry Alignment</span>
+            <h2 data-i18n="section_careers_title">Tech Career Tracks</h2>
+            <p class="subtitle" data-i18n="section_careers_sub">Browse in-demand software engineering specializations, verify real-time hiring benchmarks, expected compensation, and select your career target.</p>
+          </div>
+
+          <!-- Filter & Search Bar -->
+          <div class="filter-bar">
+            <div class="filter-chips">
+              <button type="button" class="filter-chip career-filter-chip active" data-category="all">All Tracks</button>
+              <button type="button" class="filter-chip career-filter-chip" data-category="Software">Software Eng</button>
+              <button type="button" class="filter-chip career-filter-chip" data-category="Artificial">AI & ML</button>
+              <button type="button" class="filter-chip career-filter-chip" data-category="Cloud">Cloud / DevOps</button>
+              <button type="button" class="filter-chip career-filter-chip" data-category="Data">Data & Analytics</button>
+              <button type="button" class="filter-chip career-filter-chip" data-category="Security">Cybersecurity</button>
+              <button type="button" class="filter-chip career-filter-chip" data-category="Mobile">Mobile Apps</button>
+            </div>
+
+            <div class="search-input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="careersSearchInput" class="search-input" placeholder="Search track, technology (e.g. React, Python)..." aria-label="Search Careers">
+            </div>
+          </div>
+
+          <!-- Career Cards Grid -->
+          <div id="careersGrid" class="careers-grid">
+            <!-- Dynamically populated by JS -->
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 3: SKILL-GAP ANALYZER
+             ==================================================================== -->
+        <section id="sec-skill-gap" class="page-section">
+          <div class="section-header">
+            <span class="sub-badge">Proficiency Diagnostics</span>
+            <h2 data-i18n="section_skill_title">Interactive Skill-Gap Analyzer</h2>
+            <p class="subtitle" data-i18n="section_skill_sub">Rate your current familiarity across critical skills. The engine computes your hiring benchmark gap and pinpoints high-priority areas to study.</p>
+          </div>
+
+          <!-- Target Career Selector Dropdown -->
+          <div style="margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; background: var(--bg-card); padding: 1rem 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span style="font-weight: 600; color: var(--text-main);">Evaluating Track:</span>
+              <select id="skillCareerSelect" style="background: #070d19; border: 1px solid var(--border-subtle); color: var(--accent-cyan); font-weight: 600; padding: 0.45rem 0.75rem; border-radius: 6px; outline: none; cursor: pointer;">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem;">
+              <button type="button" id="btnQuickRateAll" class="btn btn-sm btn-secondary">Set All to Competent (60%)</button>
+              <button type="button" id="btnSyncRoadmap" class="btn btn-sm btn-primary">Sync to Roadmap</button>
+            </div>
+          </div>
+
+          <!-- Layout: Skills List (Left) + Gap Summary & Radar Chart (Right) -->
+          <div class="skill-analysis-layout">
+            <div id="skillItemsContainer">
+              <!-- Dynamically rendered list of skills with rating pills -->
+            </div>
+
+            <div class="gap-summary-sticky">
+              <!-- Overall Score Card -->
+              <div class="card gap-stat-block">
+                <h3 class="card-title" style="margin-bottom: 0.75rem;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+                  Benchmark Readiness
+                </h3>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.5rem;">
+                  <span id="gapReadinessScore" style="font-size: 2.2rem; font-weight: 800; color: var(--accent-cyan); line-height: 1;">68%</span>
+                  <span style="font-size: 0.85rem; color: var(--text-muted);">of industry target</span>
+                </div>
+                <div style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 1rem;">
+                  Mastered: <strong id="gapMasteredCount" style="color: var(--accent-emerald);">3 of 7</strong>
+                </div>
+
+                <!-- Canvas Chart -->
+                <div style="margin-bottom: 1rem;">
+                  <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">Current vs Target Benchmark</span>
+                  <div style="background: rgba(7, 13, 25, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 0.75rem;">
+                    <canvas id="skillGapCanvas"></canvas>
+                  </div>
+                </div>
+
+                <!-- Critical Gaps List -->
+                <div>
+                  <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; display: block; margin-bottom: 0.5rem;">Top Priority Gaps to Close:</span>
+                  <ul id="criticalGapsList" style="list-style: none; padding: 0; margin: 0;">
+                    <!-- Dynamically populated -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 4: LEARNING ROADMAP
+             ==================================================================== -->
+        <section id="sec-roadmap" class="page-section">
+          <div class="section-header">
+            <span class="sub-badge">Structured Path</span>
+            <h2 data-i18n="section_roadmap_title">Personalized Learning Roadmap</h2>
+            <p class="subtitle" data-i18n="section_roadmap_sub">A phase-by-phase curriculum customized to your target career. Check off milestones as you complete topics and sprint projects.</p>
+          </div>
+
+          <!-- Roadmap Header Card -->
+          <div class="card" style="margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+              <div>
+                <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-dim); letter-spacing: 0.05em;">Curriculum Track</span>
+                <h3 id="roadmapCareerTitle" style="font-size: 1.35rem; color: var(--text-main);">💻 Full Stack Web Developer</h3>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem;">
+                <button type="button" id="btnExportRoadmap" class="btn btn-sm btn-outline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                  Export Roadmap (.txt)
+                </button>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div>
+              <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">
+                <span id="roadmapMilestoneCount">2 of 8 completed</span>
+                <strong id="roadmapProgressPercent" style="color: var(--accent-cyan);">25%</strong>
+              </div>
+              <div style="height: 8px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden;">
+                <div id="roadmapProgressBarFill" style="height: 100%; width: 25%; background: var(--grad-primary); transition: width 0.4s ease;"></div>
+              </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div style="display: flex; gap: 0.5rem; margin-top: 1.25rem;">
+              <button type="button" class="filter-chip roadmap-filter-btn active" data-filter="all">All Milestones</button>
+              <button type="button" class="filter-chip roadmap-filter-btn" data-filter="pending">Pending</button>
+              <button type="button" class="filter-chip roadmap-filter-btn" data-filter="completed">Completed</button>
+            </div>
+          </div>
+
+          <!-- Vertical Timeline -->
+          <div id="roadmapPhasesContainer" class="roadmap-timeline">
+            <!-- Dynamically populated by RoadmapModule -->
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 5: PROJECT TRACKER
+             ==================================================================== -->
+        <section id="sec-projects" class="page-section">
+          <div class="section-header">
+            <span class="sub-badge">Proof of Competence</span>
+            <h2 data-i18n="section_projects_title">Portfolio Project Tracker</h2>
+            <p class="subtitle" data-i18n="section_projects_sub">Manage your capstone and portfolio software projects. Recruiters look for live deployments, clear architecture, and public code repositories.</p>
+          </div>
+
+          <!-- Project Filter Bar & Add Button -->
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="project-status-tabs">
+              <button type="button" class="filter-chip project-tab-btn active" data-status="all">All Projects</button>
+              <button type="button" class="filter-chip project-tab-btn" data-status="in-progress">In Progress</button>
+              <button type="button" class="filter-chip project-tab-btn" data-status="completed">Completed</button>
+              <button type="button" class="filter-chip project-tab-btn" data-status="idea">Ideas</button>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-sm" onclick="SkillBridgeApp.openModal('modalAddProject')">
+              + Add Project
+            </button>
+          </div>
+
+          <!-- Projects Grid -->
+          <div id="projectsContainer" class="projects-grid">
+            <!-- Dynamically populated by TrackersModule -->
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 6: CODING PRACTICE TRACKER
+             ==================================================================== -->
+        <section id="sec-coding" class="page-section">
+          <div class="section-header">
+            <span class="sub-badge">Algorithmic Readiness</span>
+            <h2 data-i18n="section_coding_title">Daily Coding Practice Tracker</h2>
+            <p class="subtitle" data-i18n="section_coding_sub">Log your problem solving across LeetCode, HackerRank, and NeetCode. Keep your consistency streak active and build muscle memory for technical screens.</p>
+          </div>
+
+          <!-- Streak Hero Card -->
+          <div class="coding-streak-hero">
+            <div class="streak-big">
+              <span class="flame-icon">🔥</span>
+              <div>
+                <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+                  <span id="codingStreakNum" class="streak-count">12</span>
+                  <span class="streak-label">Days Streak</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Keep solving at least 1 problem daily to maintain momentum.</p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div style="text-align: right;">
+                <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Total Problems</span>
+                <div id="codingTotalSolved" style="font-size: 1.5rem; font-weight: 800; color: var(--text-main);">5</div>
+              </div>
+              <button type="button" class="btn btn-primary" onclick="SkillBridgeApp.openModal('modalLogProblem')">
+                + Log Problem
+              </button>
+            </div>
+          </div>
+
+          <!-- Activity Heatmap -->
+          <div class="card" style="margin-bottom: 2rem;">
+            <div class="card-header">
+              <h3 class="card-title">Activity Heatmap (Past 15 Weeks)</h3>
+              <span style="font-size: 0.78rem; color: var(--text-dim);">Darker = More problems solved</span>
+            </div>
+            <div class="heatmap-container">
+              <div id="codingHeatmapGrid" class="heatmap-grid">
+                <!-- Dynamically populated cells -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Solved Problems Log Table -->
+          <div class="card">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
+              <div style="display: flex; gap: 0.4rem;">
+                <button type="button" class="filter-chip coding-filter-pill active" data-diff="all">All Difficulties</button>
+                <button type="button" class="filter-chip coding-filter-pill" data-diff="Easy">Easy</button>
+                <button type="button" class="filter-chip coding-filter-pill" data-diff="Medium">Medium</button>
+                <button type="button" class="filter-chip coding-filter-pill" data-diff="Hard">Hard</button>
+              </div>
+
+              <div class="search-input-wrap" style="min-width: 200px;">
+                <input type="text" id="codingSearchInput" class="search-input" placeholder="Search problems or topics..." style="padding-left: 1rem;">
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="problem-table">
+                <thead>
+                  <tr>
+                    <th>Problem Title & Notes</th>
+                    <th>Platform</th>
+                    <th>Topic / Pattern</th>
+                    <th>Difficulty</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="codingProblemsTbody">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====================================================================
+             SECTION 7: LEARNING RESOURCES HUB
+             ==================================================================== -->
+        <section id="sec-resources" class="page-section">
+          <div class="section-header">
+            <span class="sub-badge">High-Yield Knowledge</span>
+            <h2 data-i18n="section_resources_title">Curated Learning Resources</h2>
+            <p class="subtitle" data-i18n="section_resources_sub">Hand-picked, high-rating free courses, official documentations, interactive sandboxes, and cheat sheets.</p>
+          </div>
+
+          <!-- Filter Pills & Search -->
+          <div class="filter-bar">
+            <div class="filter-chips">
+              <button type="button" class="filter-chip res-track-pill active" data-track="all">All Resources</button>
+              <button type="button" class="filter-chip res-track-pill" data-track="fullstack">Web & Full Stack</button>
+              <button type="button" class="filter-chip res-track-pill" data-track="aiml">AI & ML</button>
+              <button type="button" class="filter-chip res-track-pill" data-track="clouddevops">Cloud & DevOps</button>
+              <button type="button" class="filter-chip res-track-pill" data-track="datascience">Data Science</button>
+              <button type="button" class="filter-chip res-track-pill" data-track="cybersecurity">Cybersecurity</button>
+            </div>
+
+            <div class="search-input-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="resSearchInput" class="search-input" placeholder="Search resource title or topic..." aria-label="Search Resources">
+            </div>
+          </div>
+
+          <!-- Resources Grid -->
+          <div id="resourcesGrid" class="resources-grid">
+            <!-- Dynamically populated by ResourcesModule -->
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand-logo">
+              <span class="brand-text">Skill<span>Bridge</span></span>
+            </div>
+            <p>Empowering computer science students to bridge the gap between classroom theory and industry-grade engineering mastery.</p>
+          </div>
+
+          <div class="footer-col">
+            <h4>Navigator</h4>
+            <ul class="footer-links">
+              <li><a href="#dashboard">Dashboard</a></li>
+              <li><a href="#careers">Career Explorer</a></li>
+              <li><a href="#skill-gap">Skill-Gap Analyzer</a></li>
+              <li><a href="#roadmap">Learning Roadmap</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Tools</h4>
+            <ul class="footer-links">
+              <li><a href="#projects">Project Tracker</a></li>
+              <li><a href="#coding">Coding Streak</a></li>
+              <li><a href="#resources">Resources Hub</a></li>
+              <li><a href="javascript:void(0)" class="js-open-ai-drawer">AI Copilot</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Privacy & Data</h4>
+            <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.75rem;">All your study data and streak logs are stored locally on your device in LocalStorage.</p>
+            <button type="button" class="btn btn-sm btn-secondary" onclick="SkillBridgeApp.openProfileModal()">Manage Data</button>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div>© 2026 SkillBridge — Student Career Navigator. Built for production deployment.</div>
+          <div style="display: flex; gap: 1rem;">
+            <span>Vanilla HTML5 / CSS3 / ES6+</span>
+            <span>Vercel Serverless Ready</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating Action Button (FAB) for AI Assistant -->
+    <button type="button" class="floating-ai-fab js-open-ai-drawer" aria-label="Open AI Career Copilot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      <span>Ask AI Copilot</span>
+    </button>
+
+    <!-- AI Career Assistant Drawer -->
+    <aside id="aiDrawer" class="ai-drawer" aria-label="AI Career Assistant Drawer">
+      <div class="ai-drawer-header">
+        <div class="ai-header-info">
+          <div class="ai-avatar">🤖</div>
+          <div>
+            <div style="font-weight: 700; color: var(--text-main); font-size: 1rem;">SkillBridge AI Copilot</div>
+            <div class="ai-status-badge">
+              <span class="ai-status-dot"></span>
+              <span>Online • Hybrid Assistant</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.35rem;">
+          <button type="button" id="aiClearHistory" class="btn btn-sm btn-icon-only" title="Clear chat history">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+          </button>
+          <button type="button" id="aiDrawerClose" class="btn btn-sm btn-icon-only" aria-label="Close AI Drawer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages Stream -->
+      <div id="aiMessagesList" class="ai-messages-container">
+        <!-- Dynamically rendered chat messages -->
+      </div>
+
+      <!-- Quick Prompt Suggestions Bar -->
+      <div class="quick-prompts-bar">
+        <button type="button" class="quick-prompt-chip" data-prompt="Analyze my current skill gap and suggest next 3 steps">📊 Analyze skill gaps</button>
+        <button type="button" class="quick-prompt-chip" data-prompt="Generate a 30-day intensive study sprint plan">🗓️ 30-day study plan</button>
+        <button type="button" class="quick-prompt-chip" data-prompt="Suggest 2 standout resume portfolio projects">🚀 Suggest projects</button>
+        <button type="button" class="quick-prompt-chip" data-prompt="Conduct a 3-question mock technical interview">🎤 Mock interview</button>
+      </div>
+
+      <!-- Input Bar -->
+      <div class="ai-input-area">
+        <form id="aiChatForm" class="ai-input-form">
+          <input type="text" id="aiChatInput" class="ai-text-input" placeholder="Ask career advice, interview questions, or study tips..." autocomplete="off">
+          <button type="submit" class="btn btn-primary btn-sm" aria-label="Send message">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          </button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- ====================================================================
+         MODALS
+         ==================================================================== -->
+
+    <!-- Modal 1: Student Profile & Settings -->
+    <div id="modalProfile" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">Student Profile & Settings</h3>
+          <button type="button" class="btn btn-sm btn-icon-only modal-close" aria-label="Close">✕</button>
+        </div>
+        <form id="formProfileSettings">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label" for="profileName">Full Name</label>
+              <input type="text" id="profileName" name="profileName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="profileUniversity">University / Institution</label>
+              <input type="text" id="profileUniversity" name="profileUniversity" class="form-control" placeholder="e.g. Stanford / IIT / MIT">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="profileGradYear">Expected Graduation Year</label>
+              <input type="text" id="profileGradYear" name="profileGradYear" class="form-control" placeholder="e.g. 2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="profileDreamCompanies">Dream Companies</label>
+              <input type="text" id="profileDreamCompanies" name="profileDreamCompanies" class="form-control" placeholder="e.g. Google, Stripe, Microsoft">
+            </div>
+
+            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+              <h4 style="font-size: 0.92rem; margin-bottom: 0.5rem; color: var(--text-main);">Data Backup & Portability</h4>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button type="button" id="btnExportUserData" class="btn btn-sm btn-secondary">📥 Export My Data (JSON)</button>
+                <button type="button" id="btnResetUserData" class="btn btn-sm btn-danger">⚠️ Reset Local Data</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 2: Add Project -->
+    <div id="modalAddProject" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">Add Portfolio Project</h3>
+          <button type="button" class="btn btn-sm btn-icon-only modal-close" aria-label="Close">✕</button>
+        </div>
+        <form id="formAddProject">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label" for="projectTitle">Project Title *</label>
+              <input type="text" id="projectTitle" name="projectTitle" class="form-control" placeholder="e.g. Distributed Task Queue" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projectDesc">Project Description *</label>
+              <textarea id="projectDesc" name="projectDesc" class="form-control" rows="3" placeholder="Brief explanation of architecture, trade-offs, and what you built..." required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projectStack">Technologies Used (comma separated)</label>
+              <input type="text" id="projectStack" name="projectStack" class="form-control" placeholder="e.g. Node.js, Redis, Docker, TypeScript">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projectStatus">Current Status</label>
+              <select id="projectStatus" name="projectStatus" class="form-control">
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+                <option value="idea">Idea Stage</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projectDemo">Live Demo URL (optional)</label>
+              <input type="url" id="projectDemo" name="projectDemo" class="form-control" placeholder="https://myproject.vercel.app">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projectRepo">GitHub Repository URL (optional)</label>
+              <input type="url" id="projectRepo" name="projectRepo" class="form-control" placeholder="https://github.com/username/project">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+            <button type="submit" class="btn btn-primary">Add Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 3: Log Coding Problem -->
+    <div id="modalLogProblem" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">Log Solved Coding Problem</h3>
+          <button type="button" class="btn btn-sm btn-icon-only modal-close" aria-label="Close">✕</button>
+        </div>
+        <form id="formLogProblem">
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label" for="probTitle">Problem Name *</label>
+              <input type="text" id="probTitle" name="probTitle" class="form-control" placeholder="e.g. 3Sum / LRU Cache" required>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label" for="probPlatform">Platform</label>
+                <select id="probPlatform" name="probPlatform" class="form-control">
+                  <option value="LeetCode">LeetCode</option>
+                  <option value="NeetCode">NeetCode</option>
+                  <option value="HackerRank">HackerRank</option>
+                  <option value="Codeforces">Codeforces</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="probDifficulty">Difficulty</label>
+                <select id="probDifficulty" name="probDifficulty" class="form-control">
+                  <option value="Easy">Easy</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="Hard">Hard</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="probTopic">Topic / Pattern</label>
+              <input type="text" id="probTopic" name="probTopic" class="form-control" placeholder="e.g. Two Pointers, Dynamic Programming, Graphs">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="probNotes">Notes / Key Takeaway</label>
+              <textarea id="probNotes" name="probNotes" class="form-control" rows="2" placeholder="Time/space complexity, edge cases handled..."></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary modal-close">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Problem</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 4: Inspect Career Details -->
+    <div id="modalCareerInspect" class="modal-overlay" role="dialog" aria-modal="true">
+      <div class="modal-box" style="max-width: 680px;">
+        <div class="modal-header">
+          <h3 id="modalCareerTitle" class="modal-title">Career Track Details</h3>
+          <button type="button" class="btn btn-sm btn-icon-only modal-close" aria-label="Close">✕</button>
+        </div>
+        <div id="modalCareerBody" class="modal-body">
+          <!-- Populated dynamically -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-close">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="./js/storage.js"></script>
+  <script src="./js/translations.js"></script>
+  <script src="./js/careers-data.js"></script>
+  <script src="./js/skill-gap.js"></script>
+  <script src="./js/roadmap.js"></script>
+  <script src="./js/trackers.js"></script>
+  <script src="./js/resources.js"></script>
+  <script src="./js/ai-assistant.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

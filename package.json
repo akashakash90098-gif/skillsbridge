@@ -1,0 +1,19 @@
+{
+  "name": "skillbridge",
+  "version": "1.0.0",
+  "description": "SkillBridge — Student Career Navigator",
+  "type": "module",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "career-navigator",
+    "student",
+    "skill-gap",
+    "learning-roadmap",
+    "coding-tracker"
+  ],
+  "author": "SkillBridge Team",
+  "license": "MIT"
+}
