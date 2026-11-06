@@ -196,3 +196,4 @@ SkillBridge has been tested and verified across key viewport widths:
 
 ## 📄 License
 This project is open-source and available under the **MIT License**.
+

@@ -385,3 +385,4 @@ const CAREERS_DATA = [
 function getCareerById(careerId) {
   return CAREERS_DATA.find(c => c.id === careerId) || CAREERS_DATA[0];
 }
+

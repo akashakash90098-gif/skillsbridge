@@ -477,3 +477,4 @@ const SkillBridgeApp = {
 document.addEventListener('DOMContentLoaded', () => {
   SkillBridgeApp.init();
 });
+
